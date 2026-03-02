@@ -1,0 +1,109 @@
+# =========================
+# Maven / Java
+# =========================
+target/
+*.class
+hs_err_pid*
+replay_pid*
+
+# Maven wrapper (keep the jar)
+!.mvn/wrapper/maven-wrapper.jar
+
+# Maven release / versions plugin files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# =========================
+# Eclipse / STS
+# =========================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# =========================
+# NetBeans
+# =========================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Gradle / Kotlin (just in case)
+# =========================
+build/
+.kotlin/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Test reports / artifacts
+# =========================
+reports/
+test-output/
+surefire-reports/
+failsafe-reports/
+cucumber-report/
+cucumber-reports/
+cucumber.json
+cucumber.xml
+
+# Allure
+allure-results/
+allure-report/
+
+# Screenshots / videos (if you capture them)
+screenshots/
+videos/
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+*.local
+config.local.properties
+secrets.properties
+
+# =========================
+# Mobile app binaries (usually should NOT be committed)
+# =========================
+*.apk
+*.aab
+*.ipa
+*.app
+*.apks
