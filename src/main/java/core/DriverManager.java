@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.net.URL;
 
 public class DriverManager {
 
@@ -16,19 +15,32 @@ public class DriverManager {
 
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability("platformName", platform);
-            caps.setCapability("deviceName", ConfigReader.get("deviceName"));
 
             if ("android".equalsIgnoreCase(platform)) {
+
+                caps.setCapability("deviceName", ConfigReader.get("androidDeviceName"));
                 caps.setCapability("automationName", "UiAutomator2");
-                caps.setCapability("appPackage", ConfigReader.get("appPackage"));
-                caps.setCapability("appActivity", ConfigReader.get("appActivity"));
+                caps.setCapability("appPackage", ConfigReader.get("androidAppPackage"));
+                caps.setCapability("appActivity", ConfigReader.get("androidAppActivity"));
 
                 driver.set(new AndroidDriver(
-                        new URL(ConfigReader.get("appiumServer")),
+                        new java.net.URI(ConfigReader.get("appiumServer")).toURL(),
                         caps
                 ));
+
+            } else if ("ios".equalsIgnoreCase(platform)) {
+
+                // iOS placeholder (requires macOS + Xcode)
+                throw new RuntimeException(
+                        "iOS execution requires macOS + Xcode (XCUITest / WebDriverAgent). " +
+                                "Current environment is Windows-only."
+                );
+
             } else {
-                throw new RuntimeException("Only Android is wired for now. iOS will be added next.");
+                throw new RuntimeException(
+                        "Unknown platform: " + platform +
+                                " (use 'android' or 'ios' in config.properties)"
+                );
             }
 
         } catch (Exception e) {

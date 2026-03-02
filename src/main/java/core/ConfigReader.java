@@ -25,4 +25,8 @@ public class ConfigReader {
         }
         return value.trim();
     }
+    public static String getOptional(String key) {
+        String value = props.getProperty(key);
+        return (value == null) ? null : value.trim();
+    }
 }
