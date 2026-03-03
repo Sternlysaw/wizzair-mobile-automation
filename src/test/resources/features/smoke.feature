@@ -1,5 +1,5 @@
 Feature: Smoke
 
   Scenario: Appium session can start
-    Given the appium driver is started
+    Given the app is launched
     Then the driver session should be active

@@ -8,15 +8,14 @@ import org.junit.Assert;
 
 public class SmokeSteps {
 
-    @Given("the appium driver is started")
-    public void the_appium_driver_is_started() {
-        DriverManager.initDriver();
+    @Given("the app is launched")
+    public void the_app_is_launched() {
+        Assert.assertNotNull("Driver should be started by Hooks", DriverManager.getDriver());
     }
 
     @Then("the driver session should be active")
     public void the_driver_session_should_be_active() {
         AppiumDriver driver = DriverManager.getDriver();
-        Assert.assertNotNull("Driver should not be null", driver);
         Assert.assertNotNull("Session ID should not be null", driver.getSessionId());
     }
 }
