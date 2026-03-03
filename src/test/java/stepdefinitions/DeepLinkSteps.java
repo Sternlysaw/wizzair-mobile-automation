@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import utils.DeepLinkUtils;
+import io.appium.java_client.android.AndroidDriver;
+
 
 public class DeepLinkSteps {
 
@@ -16,7 +18,10 @@ public class DeepLinkSteps {
 
     @Then("the app should be opened")
     public void the_app_should_be_opened() {
-        Assert.assertNotNull("Driver should exist", DriverManager.getDriver());
-        Assert.assertNotNull("Session should exist", DriverManager.getDriver().getSessionId());
+        io.appium.java_client.android.AndroidDriver d =
+            (io.appium.java_client.android.AndroidDriver) DriverManager.getDriver();
+
+        org.junit.Assert.assertEquals("com.wizzair.WizzAirApp", d.getCurrentPackage());
+        org.junit.Assert.assertNotNull("Session should exist", d.getSessionId());
     }
 }
