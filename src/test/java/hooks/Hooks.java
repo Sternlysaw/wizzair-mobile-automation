@@ -19,10 +19,9 @@ public class Hooks {
     @After
     public void afterScenario(Scenario scenario) {
         try {
-            if (scenario.isFailed()) {
-                AppiumDriver driver = DriverManager.getDriver();
-                Path screenshotPath = ScreenshotUtils.takeScreenshot(driver, scenario.getName());
-                scenario.log("Screenshot saved: " + screenshotPath.toString());
+            // Only attempt screenshots/logging if driver exists
+            if (DriverManager.hasDriver()) {
+                // later we can add screenshot-on-failure here safely
             }
         } finally {
             DriverManager.quitDriver();

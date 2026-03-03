@@ -3,6 +3,7 @@ package core;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utils.AppiumHealthCheck;
 
 
 public class DriverManager {
@@ -12,6 +13,8 @@ public class DriverManager {
     public static void initDriver() {
         try {
             String platform = ConfigReader.get("platform");
+            //Health check BEFORE starting driver
+            AppiumHealthCheck.verifyServerUp(ConfigReader.get("appiumServer"));
 
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability("platformName", platform);
@@ -48,6 +51,9 @@ public class DriverManager {
         }
     }
 
+    public static boolean hasDriver() {
+        return driver.get() != null;
+    }
     public static AppiumDriver getDriver() {
         if (driver.get() == null) {
             throw new IllegalStateException("Driver is null. Did you call DriverManager.initDriver()?");
