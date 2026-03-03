@@ -15,9 +15,9 @@ public class DeepLinkUtils {
 
             Process process = new ProcessBuilder(
                     "adb", "shell", "am", "start", "-W",
+                    "-n", pkg + "/" + ConfigReader.get("androidAppActivity"),
                     "-a", "android.intent.action.VIEW",
-                    "-d", url,
-                    pkg
+                    "-d", url
             ).redirectErrorStream(true).start();
 
             String output = readAll(process);
