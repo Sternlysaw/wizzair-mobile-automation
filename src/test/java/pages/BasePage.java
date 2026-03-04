@@ -30,15 +30,6 @@ public abstract class BasePage {
         wait.clickable(locator).click();
     }
 
-    protected void type(By locator, String text) {
-        WebElement el = wait.visible(locator);
-        el.clear();
-        el.sendKeys(text);
-    }
-
-    protected String text(By locator) {
-        return wait.visible(locator).getText();
-    }
     protected void tapCenter(By locator) {
         WebElement el = wait.visible(locator);
         Rectangle r = el.getRect();
