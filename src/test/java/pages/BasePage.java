@@ -44,7 +44,6 @@ public abstract class BasePage {
         driver.perform(Collections.singletonList(tap));
     }
 
-    // ✅ Added helpers
     protected void type(By locator, String text) {
         WebElement el = wait.visible(locator);
         el.sendKeys(text);

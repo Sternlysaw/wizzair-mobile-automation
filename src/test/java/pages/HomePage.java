@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
             AppiumBy.id("com.wizzair.WizzAirApp:id/home_searchSection");
     private final By searchFlightsButton =
             AppiumBy.id("com.wizzair.WizzAirApp:id/home_search_searchButton");
-    private final By homeScrollView = AppiumBy.className("android.widget.ScrollView");
+    private final By ScrollView = AppiumBy.className("android.widget.ScrollView");
     private final By leavingFromField =
             AppiumBy.id("com.wizzair.WizzAirApp:id/home_search_leavingStation");
     private final By goingToField =
@@ -35,7 +35,7 @@ public class HomePage extends BasePage {
         }
     }
     public void tapSearchFlights() {
-        ScrollUtils.swipeUpInside(homeScrollView);
+        ScrollUtils.swipeUpInside(ScrollView);
         tapCenter(searchFlightsButton);
     }
 

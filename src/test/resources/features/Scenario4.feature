@@ -19,3 +19,5 @@ Feature: Continue booking and reach sign in
     Then the trip summary screen should be displayed
     When I continue from summary
     When I sign in if prompted with email "testersenne@gmail.com" and password "Testersenne123@"
+    When I see want a discount page
+    Then I do not want a discount

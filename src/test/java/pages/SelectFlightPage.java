@@ -80,13 +80,12 @@ public class SelectFlightPage extends BasePage {
                     return true;
                 }
             }
-
             // If the signature didn't change compared to previous swipe, we might be at the end.
             if (sig.equals(lastSig)) {
                 // do one more swipe to confirm "hard end"
                 ScrollUtils.swipeUpInside(searchScrollView);
                 List<String> sig2 = visibleSignature();
-                return sig2.equals(sig); // if still unchanged -> end reached
+                return sig2.equals(sig);
             }
 
             lastSig = sig;

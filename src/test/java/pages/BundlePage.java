@@ -14,9 +14,6 @@ public class BundlePage extends BasePage {
     private final By next = AppiumBy.androidUIAutomator("new UiSelector().text(\"NEXT\")");
     private final By ScrollView = AppiumBy.className("android.widget.ScrollView");
 
-    public boolean isDisplayed() {
-        return !driver.findElements(title).isEmpty();
-    }
     public void waitForPage() {
         wait.visible(title);
     }

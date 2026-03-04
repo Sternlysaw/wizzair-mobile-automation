@@ -17,13 +17,10 @@ public class SignInPage extends BasePage {
         wait.visible(signInBtn);
     }
 
-    public boolean isDisplayed() {
-        return !driver.findElements(signInBtn).isEmpty();
-    }
     public boolean isDisplayedQuick() {
         // short check so we don't wait 15s when it's not present
         try {
-            return wait.isVisible(signInBtn, Duration.ofSeconds(2)); // use a stable locator you already have
+            return wait.isVisible(signInBtn, Duration.ofSeconds(2));
         } catch (Exception e) {
             return false;
         }
