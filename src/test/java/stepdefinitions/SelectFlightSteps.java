@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.SelectFlightPage;
 
@@ -36,5 +37,9 @@ public class SelectFlightSteps {
                 "Scrolling neither loaded new items nor reached a stable end state",
                 page.infiniteScrollLoadsMoreOrStops(6)
         );
+    }
+    @When("I select the first available flight")
+    public void i_select_the_first_available_flight() {
+        new SelectFlightPage().selectFirstFlight();
     }
 }

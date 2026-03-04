@@ -95,4 +95,8 @@ public class SelectFlightPage extends BasePage {
         // Nothing new found, and we didn't conclusively prove end; treat as not meeting requirement
         return false;
     }
+    public void selectFirstFlight() {
+        By firstCard = AppiumBy.id("com.wizzair.WizzAirApp:id/flight_select_journey_normal_price");
+        driver.findElements(firstCard).get(0).click();
+    }
 }

@@ -13,27 +13,6 @@ import java.time.Duration;
 import java.util.Collections;
 public class ScrollUtils {
 
-    private static void swipeInside(By containerLocator, double startPct, double endPct) {
-        AppiumDriver driver = DriverManager.getDriver();
-        WebElement container = driver.findElement(containerLocator);
-        Rectangle r = container.getRect();
-
-        int x = r.getX() + r.getWidth() / 2;
-
-        int startY = r.getY() + (int)(r.getHeight() * startPct);
-        int endY   = r.getY() + (int)(r.getHeight() * endPct);
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 0);
-
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        swipe.addAction(new Pause(finger, Duration.ofMillis(250)));
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(850), PointerInput.Origin.viewport(), x, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        driver.perform(Collections.singletonList(swipe));
-    }
     public static void swipeUpInside(By containerLocator) {
         AppiumDriver driver = DriverManager.getDriver();
 
@@ -49,6 +28,27 @@ public class ScrollUtils {
         swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
         swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
+    }
+    public static void swipeLeftInside(By containerLocator) {
+        AppiumDriver driver = DriverManager.getDriver();
+
+        WebElement container = driver.findElement(containerLocator);
+        Rectangle r = container.getRect();
+
+        int startY = r.y + r.height / 2;
+
+        int startX = r.x + (int)(r.width * 0.75);
+        int endX   = r.x + (int)(r.width * 0.25);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), endX, startY));
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(swipe));

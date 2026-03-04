@@ -11,7 +11,6 @@ import org.openqa.selenium.interactions.Sequence;
 import java.time.Duration;
 import java.util.Collections;
 
-
 public abstract class BasePage {
 
     protected final AppiumDriver driver;
@@ -43,5 +42,23 @@ public abstract class BasePage {
         tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(tap));
+    }
+
+    // ✅ Added helpers
+    protected void type(By locator, String text) {
+        WebElement el = wait.visible(locator);
+        el.sendKeys(text);
+    }
+
+    protected void clear(By locator) {
+        WebElement el = wait.visible(locator);
+        el.clear();
+    }
+
+    protected void clearAndType(By locator, String text) {
+        WebElement el = wait.visible(locator);
+        el.click();
+        el.clear();
+        el.sendKeys(text);
     }
 }
