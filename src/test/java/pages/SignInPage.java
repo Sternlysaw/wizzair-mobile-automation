@@ -1,68 +1,58 @@
 package pages;
 
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
+import java.time.Duration;
 
 public class SignInPage extends BasePage {
 
-    private final By title = AppiumBy.androidUIAutomator("new UiSelector().text(\"SIGN IN\")");
-    private final By emailInput = By.id("com.wizzair.WizzAirApp:id/sign_in_email");
+    private final By title = By.id("com.wizzair.WizzAirApp:id/toolbar"); // or keep text("SIGN IN") if you prefer
+    private final By email = By.id("com.wizzair.WizzAirApp:id/sign_in_email");
+    private final By password = By.id("com.wizzair.WizzAirApp:id/sign_in_password");
+    private final By signInBtn = By.id("com.wizzair.WizzAirApp:id/sign_in_btn");
 
-    // password id is not confirmed; keep robust
-    private final By passwordInputById = By.id("com.wizzair.WizzAirApp:id/sign_in_password");
-    private final By passwordInputByHint = AppiumBy.androidUIAutomator(
-            "new UiSelector().className(\"android.widget.EditText\").textContains(\"Password\")"
-    );
-
-    private final By signInButton = By.id("com.wizzair.WizzAirApp:id/sign_in_btn");
-
-    public boolean isDisplayed() {
-        return !driver.findElements(title).isEmpty();
-    }
 
     public void waitForPage() {
-        wait.visible(title);
-        wait.visible(emailInput);
-        wait.visible(signInButton);
+        wait.visible(email);
+        wait.visible(password);
+        wait.visible(signInBtn);
     }
 
-    public void typeEmail(String email) {
-        clearAndType(emailInput, email);
+    public boolean isDisplayed() {
+        return !driver.findElements(signInBtn).isEmpty();
     }
-
-    private By resolvePasswordLocator() {
-        if (!driver.findElements(passwordInputById).isEmpty()) return passwordInputById;
-        if (!driver.findElements(passwordInputByHint).isEmpty()) return passwordInputByHint;
-        return AppiumBy.className("android.widget.EditText");
-    }
-
-    public void typePassword(String password) {
-        By pwd = resolvePasswordLocator();
-
-        if (pwd.equals(AppiumBy.className("android.widget.EditText"))) {
-            List<WebElement> edits = driver.findElements(pwd);
-            if (edits.size() < 2) throw new AssertionError("Could not find password field on Sign In screen");
-
-            WebElement passwordEl = edits.get(1);
-            passwordEl.click();
-            passwordEl.clear();
-            passwordEl.sendKeys(password);
-        } else {
-            clearAndType(pwd, password);
+    public boolean isDisplayedQuick() {
+        // short check so we don't wait 15s when it's not present
+        try {
+            return wait.isVisible(signInBtn, Duration.ofSeconds(2)); // use a stable locator you already have
+        } catch (Exception e) {
+            return false;
         }
     }
 
-    public void tapSignIn() {
-        click(signInButton);
+    public void loginIfDisplayed(String email, String password) {
+        if (!isDisplayedQuick()) {
+            return; // already logged in -> no sign in screen
+        }
+        login(email, password);
+        tapSignIn();
     }
 
-    public void login(String email, String password) {
+    public void typeEmail(String value) {
+        clearAndType(email, value);
+    }
+
+    public void typePassword(String value) {
+        clearAndType(password, value);
+    }
+
+    public void tapSignIn() {
+        click(signInBtn);
+    }
+
+    public void login(String emailValue, String passwordValue) {
         waitForPage();
-        typeEmail(email);
-        typePassword(password);
+        typeEmail(emailValue);
+        typePassword(passwordValue);
         tapSignIn();
     }
 }

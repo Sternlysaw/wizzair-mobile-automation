@@ -14,7 +14,7 @@ import java.util.Collections;
 public abstract class BasePage {
 
     protected final AppiumDriver driver;
-    protected final WaitUtils wait;
+    protected static WaitUtils wait = null;
 
     protected BasePage() {
         this.driver = DriverManager.getDriver();
@@ -25,7 +25,7 @@ public abstract class BasePage {
         return wait.visible(locator);
     }
 
-    protected void click(By locator) {
+    protected static void click(By locator) {
         wait.clickable(locator).click();
     }
 

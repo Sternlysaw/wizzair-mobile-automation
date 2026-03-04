@@ -3,6 +3,8 @@ package pages;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import utils.ScrollUtils;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BundlePage extends BasePage {
 
@@ -23,6 +25,7 @@ public class BundlePage extends BasePage {
 
         for (int i = 0; i < 5; i++) {
             if (!driver.findElements(quickTravel).isEmpty()) {
+                wait.clickable(quickTravel);
                 click(quickTravel);
                 wait.clickable(next);
                 return;
@@ -36,6 +39,7 @@ public class BundlePage extends BasePage {
 
         for (int i = 0; i < 8; i++) {
             if (!driver.findElements(packAndSave).isEmpty()) {
+                wait.clickable(packAndSave);
                 click(packAndSave);
                 wait.clickable(next);
                 return;
