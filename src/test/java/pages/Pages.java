@@ -22,6 +22,9 @@ import pages.ios.DiscountPageIOS;
 import pages.api.PassengersPageActions;
 import pages.android.PassengersPageAndroid;
 import pages.ios.PassengersPageIOS;
+import pages.api.BaggagesPageActions;
+import pages.android.BaggagesPageAndroid;
+import pages.ios.BaggagesPageIOS;
 
 public class Pages {
 
@@ -78,6 +81,13 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new PassengersPageIOS();
             case "android" -> new PassengersPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static BaggagesPageActions baggages() {
+        return switch (platform()) {
+            case "ios" -> new BaggagesPageIOS();
+            case "android" -> new BaggagesPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
