@@ -1,57 +1,57 @@
 package hooks;
 
-import core.ConfigReader;
 import core.DriverManager;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-
-import java.util.HashMap;
-import java.util.Map;
+import io.cucumber.java.Scenario;
+import utils.PermissionHandler;
+import utils.ScreenshotUtils;
 
 public class Hooks {
 
     @Before
     public void beforeScenario() {
         DriverManager.initDriver();
+        PermissionHandler.handleAndroidFirstLaunchDialogs();
     }
 
     @After
-    public void afterScenario() {
+    public void afterScenario(Scenario scenario) {
         try {
             if (DriverManager.hasDriver()) {
                 AppiumDriver driver = DriverManager.getDriver();
 
-                String platform = ConfigReader.getOptional("platform");
-                if (platform == null) platform = "android";
-                platform = platform.trim().toLowerCase();
+                boolean screenshotAlways = Boolean.parseBoolean(
+                        System.getProperty("screenshotAlways", "false")
+                );
 
-                // Use correct key per platform:
-                // - iOS expects bundleId
-                // - Android commonly uses appId (package)
-                Map<String, Object> args = new HashMap<>();
+                if (scenario.isFailed() || screenshotAlways) {
+                    ScreenshotUtils.ScreenshotResult shot =
+                            ScreenshotUtils.capture(driver, scenario.getName());
 
-                if ("ios".equals(platform)) {
-                    String bundleId = ConfigReader.get("iosBundleId");
-                    args.put("bundleId", bundleId);
-                    driver.executeScript("mobile: terminateApp", args);
-                    System.out.println("[HOOKS] Terminated iOS app: " + bundleId);
-                } else {
-                    String appId = ConfigReader.get("androidAppPackage");
-                    args.put("appId", appId);
-                    driver.executeScript("mobile: terminateApp", args);
-                    System.out.println("[HOOKS] Terminated Android app: " + appId);
+                    // Attach to Cucumber report (works in Cucumber 7)
+                    scenario.attach(shot.getBytes(), "image/png", "screenshot");
+
+                    // Also log the file path (handy for CI artifacts)
+                    scenario.log("Screenshot saved at: " + shot.getPath());
                 }
             }
-        } catch (Exception e) {
-            System.out.println("[HOOKS] terminateApp failed (will still quit driver): " + e.getMessage());
         } finally {
-            try {
-                DriverManager.quitDriver();
-                System.out.println("[HOOKS] Driver quit completed.");
-            } catch (Exception e) {
-                System.out.println("[HOOKS] Driver quit failed: " + e.getMessage());
+            // Best-effort app terminate (Android only here)
+            if (DriverManager.hasDriver()) {
+                try {
+                    AppiumDriver driver = DriverManager.getDriver();
+                    if (driver instanceof AndroidDriver) {
+                        ((AndroidDriver) driver).terminateApp("com.wizzair.WizzAirApp");
+                    }
+                } catch (Exception ignored) {
+                    // ignore
+                }
             }
+
+            DriverManager.quitDriver();
         }
     }
 }

@@ -31,6 +31,12 @@ import pages.ios.SeatsPageIOS;
 import pages.api.ServicesPageActions;
 import pages.android.ServicesPageAndroid;
 import pages.ios.ServicesPageIOS;
+import pages.api.InsurancePageActions;
+import pages.android.InsurancePageAndroid;
+import pages.ios.InsurancePageIOS;
+import pages.api.PriceChangeDialogActions;
+import pages.android.PriceChangeDialogAndroid;
+import pages.ios.PriceChangeDialogIOS;
 
 public class Pages {
 
@@ -108,6 +114,20 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new ServicesPageIOS();
             case "android" -> new ServicesPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static InsurancePageActions insurance() {
+        return switch (platform()) {
+            case "ios" -> new InsurancePageIOS();
+            case "android" -> new InsurancePageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static PriceChangeDialogActions priceChangeDialog() {
+        return switch (platform()) {
+            case "ios" -> new PriceChangeDialogIOS();
+            case "android" -> new PriceChangeDialogAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }

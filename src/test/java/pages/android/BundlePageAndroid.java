@@ -3,6 +3,7 @@ package pages.android;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import pages.BasePage;
+import pages.Pages;
 import pages.api.BundlePageActions;
 import utils.ScrollUtils;
 
@@ -66,6 +67,6 @@ public class BundlePageAndroid extends BasePage implements BundlePageActions {
     public void tapNext() {
         click(next);
         // Handle optional price change popup
-        new PriceChangeDialog().acceptIfPresent();
+        Pages.priceChangeDialog().acceptIfPresent();
     }
 }
