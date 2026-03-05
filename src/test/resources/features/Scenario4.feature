@@ -32,3 +32,8 @@ Feature: Continue booking and reach sign in
     Then I am on the seats page
     When I choose seat later
     And I click next on the seats page
+    Then I am on the services page
+    When I click next in the services page
+    Then I am on the insurance page
+    When I select travel insurance
+    And I click select on the insurance page

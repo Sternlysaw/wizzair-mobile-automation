@@ -3,8 +3,7 @@ package stepdefinitions;
 import core.ConfigReader;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import pages.SelectFlightPage;
+import pages.Android.SelectFlightPage;
 import utils.DeepLinkUtils;
 
 public class DeepLinkSteps {

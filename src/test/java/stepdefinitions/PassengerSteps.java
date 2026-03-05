@@ -2,7 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.PassengersPage;
+import pages.Android.PassengersPage;
 
 public class PassengerSteps {
     private final PassengersPage passengersPage = new PassengersPage();

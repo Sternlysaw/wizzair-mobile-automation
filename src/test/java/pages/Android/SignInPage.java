@@ -1,4 +1,4 @@
-package pages;
+package pages.Android;
 
 import org.openqa.selenium.By;
 import java.time.Duration;

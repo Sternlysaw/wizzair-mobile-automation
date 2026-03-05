@@ -2,7 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import pages.HomePage;
+import pages.Android.HomePage;
 import io.cucumber.java.en.When;
 public class HomeSteps {
 

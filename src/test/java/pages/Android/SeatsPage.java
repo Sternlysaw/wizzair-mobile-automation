@@ -1,4 +1,4 @@
-package pages;
+package pages.Android;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;

@@ -1,9 +1,7 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.DiscountPage;
-import pages.HomePage;
+import pages.Android.DiscountPage;
 
 public class DiscountSteps {
     private final DiscountPage discountPage = new DiscountPage();

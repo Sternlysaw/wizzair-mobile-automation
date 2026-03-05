@@ -2,7 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.BaggagesPage;
+import pages.Android.BaggagesPage;
 
 public class BaggagesSteps {
     private BaggagesPage baggagesPage = new BaggagesPage();
