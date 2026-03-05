@@ -19,6 +19,9 @@ import pages.ios.SignInPageIOS;
 import pages.api.DiscountPageActions;
 import pages.android.DiscountPageAndroid;
 import pages.ios.DiscountPageIOS;
+import pages.api.PassengersPageActions;
+import pages.android.PassengersPageAndroid;
+import pages.ios.PassengersPageIOS;
 
 public class Pages {
 
@@ -68,6 +71,13 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new DiscountPageIOS();
             case "android" -> new DiscountPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static PassengersPageActions passengers() {
+        return switch (platform()) {
+            case "ios" -> new PassengersPageIOS();
+            case "android" -> new PassengersPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
