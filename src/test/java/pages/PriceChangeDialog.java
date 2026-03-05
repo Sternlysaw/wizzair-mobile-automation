@@ -9,10 +9,10 @@ public class PriceChangeDialog extends BasePage {
 
     /**
      * IMPORTANT:
-     * We detect specifically for "price change" style wording.
+     * We detect specifically for "price changed" style wording.
      */
     private final By marker = AppiumBy.androidUIAutomator(
-            "new UiSelector().textMatches(\"(?i).*price.*(change|changed).*\" )"
+            "new UiSelector().textMatches(\"(?i).*price.*(changed).*\" )"
     );
 
     // Common button texts when a price-change prompt appears

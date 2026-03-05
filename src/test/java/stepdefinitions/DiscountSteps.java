@@ -11,7 +11,7 @@ public class DiscountSteps {
     public void i_see_want_a_discount_page() {
         discountPage.waitForPage();
     }
-    @Then("I do not want a discount")
+    @When("I do not want a discount")
         public void i_do_not_want_a_discount(){
             discountPage.tapNoThankYou();
         }

@@ -20,4 +20,7 @@ Feature: Continue booking and reach sign in
     When I continue from summary
     When I sign in if prompted with email "testersenne@gmail.com" and password "Testersenne123@"
     When I see want a discount page
-    Then I do not want a discount
+    And I do not want a discount
+    Then I am on the passenger screen
+    When I click no special assistance
+    And I click next on the passenger screen

@@ -3,8 +3,6 @@ package pages;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import utils.ScrollUtils;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BundlePage extends BasePage {
 
