@@ -20,7 +20,7 @@ public class SelectFlightPage extends BasePage {
             AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Select flight\")");
     private final By departureTimes =
             AppiumBy.id("com.wizzair.WizzAirApp:id/flight_select_journey_departure_time");
-    private final By searchScrollView = AppiumBy.className("android.widget.ScrollView");
+    private final By ScrollView = AppiumBy.className("android.widget.ScrollView");
 
     public boolean waitUntilDisplayed() {
         try {
@@ -72,7 +72,7 @@ public class SelectFlightPage extends BasePage {
         List<String> lastSig = new ArrayList<>(seen);
 
         for (int i = 0; i < maxSwipes; i++) {
-            ScrollUtils.swipeUpInside(searchScrollView);
+            ScrollUtils.swipeUpInside(ScrollView);
             List<String> sig = visibleSignature();
             // new item appeared => dynamic loading / more items exist
             for (String t : sig) {
@@ -83,7 +83,7 @@ public class SelectFlightPage extends BasePage {
             // If the signature didn't change compared to previous swipe, we might be at the end.
             if (sig.equals(lastSig)) {
                 // do one more swipe to confirm "hard end"
-                ScrollUtils.swipeUpInside(searchScrollView);
+                ScrollUtils.swipeUpInside(ScrollView);
                 List<String> sig2 = visibleSignature();
                 return sig2.equals(sig);
             }

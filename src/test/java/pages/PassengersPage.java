@@ -24,7 +24,7 @@ public class PassengersPage extends BasePage{
             }
             ScrollUtils.swipeUpInside(ScrollView);
         }
-        throw new AssertionError("No thank you can not be found after swiping");
+        throw new AssertionError("No Assistance can not be found after swiping");
     }
     public void tapNext() {
         click(next);

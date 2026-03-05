@@ -24,3 +24,8 @@ Feature: Continue booking and reach sign in
     Then I am on the passenger screen
     When I click no special assistance
     And I click next on the passenger screen
+    Then I am on the Baggages screen
+    When I click small checked in baggage
+    And I scroll until I see sport equipment
+    And I click two cabin bags and priority
+    And I click next on the Baggages page

@@ -35,8 +35,14 @@ public class HomePage extends BasePage {
         }
     }
     public void tapSearchFlights() {
-        ScrollUtils.swipeUpInside(ScrollView);
-        tapCenter(searchFlightsButton);
+        for (int i = 0; i < 5; i++) {
+            if (!driver.findElements(searchFlightsButton).isEmpty()) {
+                click(searchFlightsButton);
+                return;
+            }
+            ScrollUtils.swipeUpInside(ScrollView);
+        }
+        throw new AssertionError("Search flight button not found after swiping");
     }
 
     public void setLeavingFrom() {
