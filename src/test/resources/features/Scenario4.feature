@@ -29,3 +29,6 @@ Feature: Continue booking and reach sign in
     And I scroll until I see sport equipment
     And I click two cabin bags and priority
     And I click next on the Baggages page
+    Then I am on the seats page
+    When I choose seat later
+    And I click next on the seats page
