@@ -2,9 +2,10 @@ package pages.Android;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
+import pages.BasePage;
 import utils.ScrollUtils;
 
-public class PassengersPage extends BasePage{
+public class PassengersPage extends BasePage {
     private final By title = AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Passengers\")");
     private final By next = AppiumBy.androidUIAutomator("new UiSelector().text(\"NEXT\")");
     private final By ScrollView = AppiumBy.className("android.widget.ScrollView");

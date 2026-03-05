@@ -10,10 +10,13 @@ import org.junit.runner.RunWith;
         glue = {"stepdefinitions", "hooks"},
         plugin = {
                 "pretty",
-                "html:target/cucumber-report.html",
-                "json:target/cucumber-report.json"
+                "html:target/cucumber-ios.html",
+                "json:target/cucumber-ios.json"
         },
         monochrome = true
 )
-public class TestRunner {
+public class IosRunner {
+    static {
+        System.setProperty("platform", "ios");
+    }
 }

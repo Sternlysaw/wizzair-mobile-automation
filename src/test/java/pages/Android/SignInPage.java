@@ -1,6 +1,8 @@
 package pages.Android;
 
 import org.openqa.selenium.By;
+import pages.BasePage;
+
 import java.time.Duration;
 
 public class SignInPage extends BasePage {

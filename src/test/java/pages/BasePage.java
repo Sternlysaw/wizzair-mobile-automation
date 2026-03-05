@@ -1,4 +1,4 @@
-package pages.Android;
+package pages;
 
 import core.DriverManager;
 import io.appium.java_client.AppiumDriver;

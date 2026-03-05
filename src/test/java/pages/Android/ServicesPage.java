@@ -2,6 +2,7 @@ package pages.Android;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
+import pages.BasePage;
 
 public class ServicesPage extends BasePage {
     private final By title = AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Services\")");

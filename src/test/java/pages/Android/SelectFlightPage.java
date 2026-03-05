@@ -4,6 +4,7 @@ import core.DriverManager;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import pages.BasePage;
 import utils.WaitUtils;
 import org.openqa.selenium.WebElement;
 
