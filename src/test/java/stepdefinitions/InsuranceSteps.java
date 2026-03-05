@@ -2,7 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Android.InsurencesPage;
+import pages.android.InsurencesPage;
 
 public class InsuranceSteps {
     InsurencesPage insurencesPage = new InsurencesPage();

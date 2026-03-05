@@ -1,4 +1,4 @@
-package pages.IOS;
+package pages.ios;
 
 import pages.BasePage;
 import pages.api.BundlePageActions;

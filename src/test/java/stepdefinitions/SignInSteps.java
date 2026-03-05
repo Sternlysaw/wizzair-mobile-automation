@@ -1,7 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.When;
-import pages.Android.SignInPage;
+import pages.android.SignInPage;
 
 public class SignInSteps {
 

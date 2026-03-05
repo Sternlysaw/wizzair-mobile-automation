@@ -1,4 +1,4 @@
-package pages.Android;
+package pages.android;
 
 import org.openqa.selenium.By;
 import pages.BasePage;

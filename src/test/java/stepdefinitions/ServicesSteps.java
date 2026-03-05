@@ -2,7 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Android.ServicesPage;
+import pages.android.ServicesPage;
 
 public class ServicesSteps {
     ServicesPage servicesPage = new ServicesPage();

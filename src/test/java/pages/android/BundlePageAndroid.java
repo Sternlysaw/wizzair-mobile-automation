@@ -3,7 +3,6 @@ package pages.android;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import pages.BasePage;
-import pages.Android.PriceChangeDialog;
 import pages.api.BundlePageActions;
 import utils.ScrollUtils;
 

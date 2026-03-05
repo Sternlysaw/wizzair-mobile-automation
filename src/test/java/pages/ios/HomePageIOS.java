@@ -1,4 +1,4 @@
-package pages.IOS;
+package pages.ios;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;

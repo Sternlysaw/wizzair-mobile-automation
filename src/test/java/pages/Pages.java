@@ -1,15 +1,18 @@
 package pages;
 
 import core.ConfigReader;
+import pages.ios.TripSummaryPageIOS;
+import pages.android.TripSummaryPageAndroid;
 import pages.api.HomePageActions;
 import pages.api.SelectFlightPageActions;
 import pages.android.HomePageAndroid;
 import pages.android.SelectFlightPageAndroid;
-import pages.IOS.HomePageIOS;
-import pages.IOS.SelectFlightPageIOS;
+import pages.ios.HomePageIOS;
+import pages.ios.SelectFlightPageIOS;
 import pages.api.BundlePageActions;
 import pages.android.BundlePageAndroid;
-import pages.IOS.BundlePageIOS;
+import pages.ios.BundlePageIOS;
+import pages.api.TripSummaryPageActions;
 
 public class Pages {
 
@@ -38,6 +41,13 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new BundlePageIOS();
             case "android" -> new BundlePageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static TripSummaryPageActions tripSummary() {
+        return switch (platform()) {
+            case "ios" -> new TripSummaryPageIOS();
+            case "android" -> new TripSummaryPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
