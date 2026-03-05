@@ -1,21 +1,17 @@
-package pages.Android;
+package pages.android;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
+import pages.BasePage;
+import pages.api.PriceChangeDialogActions;
 
 import java.util.List;
 
-public class PriceChangeDialog extends BasePage {
+public class PriceChangeDialogAndroid extends BasePage implements PriceChangeDialogActions {
 
-    /**
-     * IMPORTANT:
-     * We detect specifically for "price changed" style wording.
-     */
-    private final By marker = AppiumBy.androidUIAutomator(
-            "new UiSelector().textMatches(\"(?i).*price.*(changed).*\" )"
-    );
+    private final By marker =
+            AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i).*price.*(changed).*\" )");
 
-    // Common button texts when a price-change prompt appears
     private final List<By> actionButtons = List.of(
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)continue\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)ok\")"),
@@ -26,8 +22,8 @@ public class PriceChangeDialog extends BasePage {
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)yes\")")
     );
 
+    @Override
     public void acceptIfPresent() {
-        // If the specific marker isn't there, it's not the price-change dialog.
         if (driver.findElements(marker).isEmpty()) {
             return;
         }

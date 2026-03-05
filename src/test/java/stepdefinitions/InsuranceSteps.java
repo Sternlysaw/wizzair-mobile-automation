@@ -2,21 +2,27 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Android.InsurencesPage;
+import pages.Pages;
+import pages.api.InsurancePageActions;
 
 public class InsuranceSteps {
-    InsurencesPage insurencesPage = new InsurencesPage();
+
+    private InsurancePageActions insurance() {
+        return Pages.insurance();
+    }
 
     @Then("I am on the insurance page")
     public void I_am_on_the_insurance_page() {
-        insurencesPage.waitForPage();
+        insurance().waitForPage();
     }
+
     @When("I select travel insurance")
     public void I_select_travel_insurance() {
-        insurencesPage.selectTravelInsurance();
+        insurance().selectTravelInsurance();
     }
+
     @When("I click select on the insurance page")
     public void I_click_select_on_the_insurance_page() {
-        insurencesPage.tapSelect();
+        insurance().tapSelectStable();
     }
 }
