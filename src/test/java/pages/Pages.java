@@ -2,8 +2,11 @@ package pages;
 
 import core.ConfigReader;
 import pages.api.HomePageActions;
+import pages.api.SelectFlightPageActions;
 import pages.android.HomePageAndroid;
+import pages.android.SelectFlightPageAndroid;
 import pages.IOS.HomePageIOS;
+import pages.IOS.SelectFlightPageIOS;
 
 public class Pages {
 
@@ -17,6 +20,14 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new HomePageIOS();
             case "android" -> new HomePageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+
+    public static SelectFlightPageActions selectFlight() {
+        return switch (platform()) {
+            case "ios" -> new SelectFlightPageIOS();
+            case "android" -> new SelectFlightPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
