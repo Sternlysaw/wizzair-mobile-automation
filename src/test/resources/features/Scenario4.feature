@@ -37,3 +37,6 @@ Feature: Continue booking and reach sign in
     Then I am on the insurance page
     When I select travel insurance
     And I click select on the insurance page
+    Then I am on the declaration page
+    When I click confirm on the declaration page
+    When I fill billing details if required

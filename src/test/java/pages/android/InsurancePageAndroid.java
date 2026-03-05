@@ -12,19 +12,15 @@ import java.time.Duration;
 
 public class InsurancePageAndroid extends BasePage implements InsurancePageActions {
 
-    // ✅ RHS unchanged
     private final By title =
             AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Select Insurance\")");
 
-    // ✅ RHS unchanged
     private final By scrollView =
             AppiumBy.className("android.widget.ScrollView");
 
-    // ✅ RHS unchanged
     private final By travelInsuranceOption =
             AppiumBy.id("com.wizzair.WizzAirApp:id/insurance_travel");
 
-    // ✅ RHS unchanged
     private final By selectButton =
             AppiumBy.id("com.wizzair.WizzAirApp:id/insurance_doneButtonSticky");
 

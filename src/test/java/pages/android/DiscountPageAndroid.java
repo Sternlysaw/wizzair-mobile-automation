@@ -8,15 +8,12 @@ import utils.ScrollUtils;
 
 public class DiscountPageAndroid extends BasePage implements DiscountPageActions {
 
-    // same value as repo (only variable name improved)
     private final By joinDiscountTitle =
             AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Join WIZZ Discount Club\")");
 
-    // same value as repo
     private final By scrollView =
             AppiumBy.className("android.widget.ScrollView");
 
-    // same value as repo
     private final By noThankYouButton =
             AppiumBy.id("com.wizzair.WizzAirApp:id/wdc_no_or_back_button");
 

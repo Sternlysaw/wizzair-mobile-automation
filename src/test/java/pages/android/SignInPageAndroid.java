@@ -9,7 +9,6 @@ import java.time.Duration;
 
 public class SignInPageAndroid extends BasePage implements SignInPageActions {
 
-    // SAME locator values, just cleaner variable names
     private final By toolbarTitle =
             By.id("com.wizzair.WizzAirApp:id/toolbar");
 
@@ -44,8 +43,49 @@ public class SignInPageAndroid extends BasePage implements SignInPageActions {
             return;
         }
 
-        login(email, password);
-        tapSignIn();
+        // Fill credentials
+        waitForPage();
+        typeEmail(email);
+        typePassword(password);
+
+        // Click sign in WITHOUT waiting for clickable afterwards
+        driver.findElement(signInButton).click();
+
+        // Now wait for progress: either Sign In disappears OR Discount appears
+        waitForPostLogin();
+    }
+    private void waitForPostLogin() {
+
+        long end = System.currentTimeMillis() + 25000; // 25s
+
+        while (System.currentTimeMillis() < end) {
+            try {
+                // If sign in screen is gone, we're good
+                if (driver.findElements(signInButton).isEmpty()) {
+                    return;
+                }
+
+                // If discount screen appears, we're good (do not throw if not converted yet)
+                try {
+                    if (!driver.findElements(
+                            io.appium.java_client.AppiumBy.androidUIAutomator(
+                                    "new UiSelector().textContains(\"Join WIZZ Discount Club\")"
+                            )
+                    ).isEmpty()) {
+                        return;
+                    }
+                } catch (Exception ignored) { }
+
+                Thread.sleep(250);
+            } catch (Exception ignored) {
+                // transient errors during transition
+            }
+        }
+
+        // If we reach here, we didn't observe a transition
+        throw new org.openqa.selenium.TimeoutException(
+                "Login clicked but app did not transition away from Sign In within timeout"
+        );
     }
 
     @Override

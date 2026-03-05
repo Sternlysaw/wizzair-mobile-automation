@@ -1,42 +1,9 @@
 package pages;
 
 import core.ConfigReader;
-import pages.ios.TripSummaryPageIOS;
-import pages.android.TripSummaryPageAndroid;
-import pages.api.HomePageActions;
-import pages.api.SelectFlightPageActions;
-import pages.android.HomePageAndroid;
-import pages.android.SelectFlightPageAndroid;
-import pages.ios.HomePageIOS;
-import pages.ios.SelectFlightPageIOS;
-import pages.api.BundlePageActions;
-import pages.android.BundlePageAndroid;
-import pages.ios.BundlePageIOS;
-import pages.api.TripSummaryPageActions;
-import pages.api.SignInPageActions;
-import pages.android.SignInPageAndroid;
-import pages.ios.SignInPageIOS;
-import pages.api.DiscountPageActions;
-import pages.android.DiscountPageAndroid;
-import pages.ios.DiscountPageIOS;
-import pages.api.PassengersPageActions;
-import pages.android.PassengersPageAndroid;
-import pages.ios.PassengersPageIOS;
-import pages.api.BaggagesPageActions;
-import pages.android.BaggagesPageAndroid;
-import pages.ios.BaggagesPageIOS;
-import pages.api.SeatsPageActions;
-import pages.android.SeatsPageAndroid;
-import pages.ios.SeatsPageIOS;
-import pages.api.ServicesPageActions;
-import pages.android.ServicesPageAndroid;
-import pages.ios.ServicesPageIOS;
-import pages.api.InsurancePageActions;
-import pages.android.InsurancePageAndroid;
-import pages.ios.InsurancePageIOS;
-import pages.api.PriceChangeDialogActions;
-import pages.android.PriceChangeDialogAndroid;
-import pages.ios.PriceChangeDialogIOS;
+import pages.android.*;
+import pages.api.*;
+import pages.ios.*;
 
 public class Pages {
 
@@ -128,6 +95,20 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new PriceChangeDialogIOS();
             case "android" -> new PriceChangeDialogAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static DeclarationPageActions declaration() {
+        return switch (platform()) {
+            case "ios" -> new DeclarationPageIOS();
+            case "android" -> new DeclarationPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static BillingDetailsPageActions billingDetails() {
+        return switch (platform()) {
+            case "ios" -> new BillingDetailsPageIOS();
+            case "android" -> new BillingDetailsPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }

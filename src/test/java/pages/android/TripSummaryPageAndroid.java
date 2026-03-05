@@ -7,11 +7,9 @@ import pages.api.TripSummaryPageActions;
 
 public class TripSummaryPageAndroid extends BasePage implements TripSummaryPageActions {
 
-    // Same selector value as your original file, better name
     private final By tripTitle =
             AppiumBy.androidUIAutomator("new UiSelector().text(\"your trip\")");
 
-    // Same selector value as your original file, better name
     private final By nextButton =
             AppiumBy.androidUIAutomator("new UiSelector().text(\"NEXT\")");
 
