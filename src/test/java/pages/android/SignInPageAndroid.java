@@ -2,6 +2,7 @@ package pages.android;
 
 import org.openqa.selenium.By;
 import pages.BasePage;
+import pages.Pages;
 import pages.api.SignInPageActions;
 
 import java.time.Duration;
@@ -59,11 +60,9 @@ public class SignInPageAndroid extends BasePage implements SignInPageActions {
 
     @Override
     public void tapSignIn() {
-
         driver.findElement(signInButton).click();
-
-        // Wait for the login screen to disappear
-        wait.invisible(signInButton);
+        // wait for next page instead of waiting for old button
+        Pages.discount().waitForPage();
     }
 
     @Override
