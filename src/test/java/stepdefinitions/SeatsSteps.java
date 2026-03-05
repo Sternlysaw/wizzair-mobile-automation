@@ -2,20 +2,27 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.android.SeatsPage;
+import pages.Pages;
+import pages.api.SeatsPageActions;
 
 public class SeatsSteps {
-    SeatsPage seatsPage = new SeatsPage();
+
+    private SeatsPageActions seats() {
+        return Pages.seats();
+    }
+
     @Then("I am on the seats page")
     public void i_am_on_the_seats_page() {
-        seatsPage.waitForPage();
+        seats().waitForPage();
     }
+
     @When("I choose seat later")
     public void i_choose_seat_later() {
-        seatsPage.chooseSeatLater();
+        seats().chooseSeatLater();
     }
+
     @When("I click next on the seats page")
     public void i_click_next_on_the_seats_page() {
-        seatsPage.clickNext();
+        seats().tapNext();
     }
 }
