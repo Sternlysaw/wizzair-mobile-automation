@@ -13,6 +13,9 @@ import pages.api.BundlePageActions;
 import pages.android.BundlePageAndroid;
 import pages.ios.BundlePageIOS;
 import pages.api.TripSummaryPageActions;
+import pages.api.SignInPageActions;
+import pages.android.SignInPageAndroid;
+import pages.ios.SignInPageIOS;
 
 public class Pages {
 
@@ -48,6 +51,13 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new TripSummaryPageIOS();
             case "android" -> new TripSummaryPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static SignInPageActions signIn() {
+        return switch (platform()) {
+            case "ios" -> new SignInPageIOS();
+            case "android" -> new SignInPageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
