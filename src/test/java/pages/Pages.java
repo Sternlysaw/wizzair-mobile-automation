@@ -7,6 +7,9 @@ import pages.android.HomePageAndroid;
 import pages.android.SelectFlightPageAndroid;
 import pages.IOS.HomePageIOS;
 import pages.IOS.SelectFlightPageIOS;
+import pages.api.BundlePageActions;
+import pages.android.BundlePageAndroid;
+import pages.IOS.BundlePageIOS;
 
 public class Pages {
 
@@ -28,6 +31,13 @@ public class Pages {
         return switch (platform()) {
             case "ios" -> new SelectFlightPageIOS();
             case "android" -> new SelectFlightPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
+    public static BundlePageActions bundle() {
+        return switch (platform()) {
+            case "ios" -> new BundlePageIOS();
+            case "android" -> new BundlePageAndroid();
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
