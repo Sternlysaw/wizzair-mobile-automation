@@ -11,7 +11,6 @@
   - Maven
 - Automates a full booking flow
 - Designed to support both Android and iOS using platform abstraction
-
 # Prerequisites
 - Java 21
 - Maven 3.9+
@@ -20,7 +19,6 @@
 - Android Studio
 - ANDROID_SDK_ROOT configured
 - Android device with USB debugging enabled
-
 # Appium Setup
 - Install Appium globally
   - npm install -g appium
@@ -28,7 +26,6 @@
   - appium driver install uiautomator2
 - Start the Appium server
   - appium
-
 # Add Your Device
 - Connect your Android device
 - Run: adb devices
@@ -42,13 +39,11 @@
   - androidAppPackage=com.wizzair.WizzAirApp
   - appActivity=com.wizzair.app.MainActivityV2
 - The UDID must match the device shown by adb devices
-
 # Run Tests
 - Using Maven:
   - mvn clean test "-Dtest=runners.AndroidRunner"
 - Or run directly from IntelliJ:
   - runners.AndroidRunner
-
 # Project Structure
 - src/test/java
 - ├── core            # Driver management and configuration
@@ -72,19 +67,17 @@
   - PermissionHandler
   - ScreenshotUtils
 # Test Report
-
 - Latest Android execution report: reports/cucumber-android.html
 - To regenerate the report:
   - mvn clean test "-Dtest=runners.AndroidRunner"
 - Default generated location:
   - target/cucumber-android.html
-
 # Assumptions
 - A valid test account exists for login
 - Flights are available for the selected route and date
 - Payment is not completed to avoid creating real bookings
-
-# Emulator Limitation
+# Limitations
+## Android emulator restriction
 - The application terminates immediately when launched in an Android emulator
 - The process exits with SIGKILL (signal 9)
 - No crash trace or system kill reason is logged
@@ -100,3 +93,11 @@
 - The same APK runs correctly on a physical Android device
 - The behavior indicates emulator detection or runtime integrity checks
 - Tests must therefore be executed on a real Android device
+## iOS execution
+- The framework includes iOS support through platform abstraction, but the tests were not executed on an iOS device due to lack of access to Apple hardware during development.
+## Payment / WebView testing
+The payment step in the booking flow normally opens a payment WebView after clicking Pay now.
+To avoid interfering with production systems, the test stops after filling in the card details and does not proceed with the payment action.
+
+Attempting to proceed with fake card details results in a declined payment and temporarily reserves the seat for 15–30 minutes in the production system.
+Because this affects live booking data, the payment confirmation step was intentionally not executed.
