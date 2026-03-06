@@ -71,6 +71,13 @@
   - DeepLinkUtils
   - PermissionHandler
   - ScreenshotUtils
+# Test Report
+
+- Latest Android execution report: reports/cucumber-android.html
+- To regenerate the report:
+  - mvn clean test "-Dtest=runners.AndroidRunner"
+- Default generated location:
+  - target/cucumber-android.html
 
 # Assumptions
 - A valid test account exists for login

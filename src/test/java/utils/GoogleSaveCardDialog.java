@@ -19,12 +19,12 @@ public class GoogleSaveCardDialog {
 
     // Prefer dismiss/negative actions first
     private static final List<By> DISMISS_BUTTONS = List.of(
+            AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)later\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)not now\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)no thanks\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)never\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)cancel\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)close\")"),
-            AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)later\")"),
             AppiumBy.androidUIAutomator("new UiSelector().descriptionMatches(\"(?i)close\")")
     );
 
