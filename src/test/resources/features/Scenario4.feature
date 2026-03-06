@@ -1,6 +1,6 @@
-Feature: Continue booking and reach sign in
+Feature: E2E booking flow
 
-  Scenario: Continue booking until sign in screen appears
+  Scenario: E2E booking flow
 
     Given I should be on the home screen
     When I set leaving from to
@@ -41,3 +41,4 @@ Feature: Continue booking and reach sign in
     When I click confirm on the declaration page
     When I fill billing details if required
     When I pay by card
+    Then I should be on the home screen

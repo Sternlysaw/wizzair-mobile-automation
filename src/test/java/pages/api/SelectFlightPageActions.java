@@ -7,4 +7,5 @@ public interface SelectFlightPageActions {
     boolean isDepartureTimeVisible(String time);
     boolean infiniteScrollLoadsMoreOrStops(int maxSwipes);
     void selectFirstFlight();
+    boolean matchesDeepLink(String deepLinkUrl);
 }

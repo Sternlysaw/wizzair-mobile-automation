@@ -1,6 +1,6 @@
-Feature: Scenario 3 scaffold - start booking and choose bundle
+Feature: start booking and choose bundle and verify the trip summary screen is displayed
 
-  Scenario: Start booking and choose Quick Travel bundle
+  Scenario: Start booking until your each trip summary
     Given I should be on the home screen
     When I set leaving from to
     And I set going to to

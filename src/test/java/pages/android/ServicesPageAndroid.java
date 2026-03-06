@@ -3,6 +3,7 @@ package pages.android;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.TimeoutException;
 import pages.BasePage;
 import pages.api.ServicesPageActions;
@@ -22,22 +23,25 @@ public class ServicesPageAndroid extends BasePage implements ServicesPageActions
     public void waitForPage() {
         wait.visible(title);
     }
+
     @Override
     public void tapNextStable() {
         waitForPage();
 
-        WaitUtils longWait = new WaitUtils(driver, Duration.ofSeconds(10));
+        WaitUtils longWait = new WaitUtils(driver, Duration.ofSeconds(35));
 
-        // Small retry for transient stale element during UI transition
-        for (int attempt = 0; attempt < 2; attempt++) {
+        for (int attempt = 0; attempt < 5; attempt++) {
             try {
                 longWait.clickable(next).click();
                 return;
-            } catch (StaleElementReferenceException ignored) {
-                // retry once
+
+            } catch (StaleElementReferenceException | ElementClickInterceptedException ignored) {
+                // retry immediately, WaitUtils will re-wait internally
             } catch (TimeoutException e) {
                 throw new TimeoutException("NEXT button was not clickable on Services page within extended timeout", e);
             }
         }
+
+        throw new RuntimeException("NEXT button could not be clicked after retries on Services page");
     }
 }

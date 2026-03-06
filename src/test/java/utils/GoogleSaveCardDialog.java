@@ -24,6 +24,7 @@ public class GoogleSaveCardDialog {
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)never\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)cancel\")"),
             AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)close\")"),
+            AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"(?i)later\")"),
             AppiumBy.androidUIAutomator("new UiSelector().descriptionMatches(\"(?i)close\")")
     );
 
