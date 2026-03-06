@@ -18,7 +18,7 @@ Feature: Continue booking and reach sign in
     And I continue from bundle selection
     Then the trip summary screen should be displayed
     When I continue from summary
-    When I sign in if prompted with email "testersenne@gmail.com" and password "Testersenne123@"
+    When I sign in if prompted with email "testersenne@gmail.com" and password "TesterSenne123@"
     When I see want a discount page
     And I do not want a discount
     Then I am on the passenger screen
@@ -40,3 +40,4 @@ Feature: Continue booking and reach sign in
     Then I am on the declaration page
     When I click confirm on the declaration page
     When I fill billing details if required
+    When I pay by card

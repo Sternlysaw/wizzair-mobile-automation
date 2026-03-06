@@ -112,4 +112,11 @@ public class Pages {
             default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
         };
     }
+    public static PaymentPageActions payment() {
+        return switch (platform()) {
+            case "ios" -> new PaymentPageIOS();
+            case "android" -> new PaymentPageAndroid();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform());
+        };
+    }
 }
