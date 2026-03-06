@@ -94,7 +94,7 @@
 - The behavior indicates emulator detection or runtime integrity checks
 - Tests must therefore be executed on a real Android device
 ## iOS execution
-- The framework includes iOS support through platform abstraction, but the tests were not executed on an iOS device due to lack of access to Apple hardware during development.
+The framework includes iOS support through platform abstraction, but the tests were not executed on an iOS device due to lack of access to Apple hardware during development.
 ## Payment / WebView testing
 The payment step in the booking flow normally opens a payment WebView after clicking Pay now.
 To avoid interfering with production systems, the test stops after filling in the card details and does not proceed with the payment action.
